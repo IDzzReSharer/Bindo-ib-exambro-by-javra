@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latihan Ujian — Bahasa Indonesia Kelas IX</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" href="./icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#673ab7;
+  --purple-d:#512da8;
+  --ink:#202124;
+  --ink-soft:#5f6368;
+  --line:#dadce0;
+  --bg:#f0f2f5;
+  --card:#ffffff;
+  --red:#d93025;
+  --green:#188038;
+  --green-bg:#e6f4ea;
+  --red-bg:#fce8e6;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  min-height:100%;
+  background:#f5f5f5 !important;
+  color-scheme:light !important;
+  color:var(--ink);
+  font-family:'Roboto',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+body{padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0)}
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:9;
+  background:#fff;
+  border-bottom:1px solid #dadce0;
+}
+.topbar .track{height:4px;background:#dadce0}
+.topbar .fill{height:100%;background:var(--purple);width:0;transition:width .25s}
+.topbar .row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 16px;
+}
+.brand{font-size:13px;font-weight:500;color:#5f6368}
+.timepill{
+  font-size:12.5px;
+  font-weight:700;
+  color:var(--purple);
+  background:#f3e8fd;
+  padding:4px 10px;
+  border-radius:12px;
+}
+.timepill.low{color:var(--red);background:var(--red-bg)}
+.wrap{
+  max-width:640px;
+  margin:0 auto;
+  padding:24px 14px 60px;
+}
+.card{
+  background:#fff;
+  border:1px solid #dadce0;
+  border-radius:12px;
+  padding:26px 28px 28px;
+  margin-bottom:16px;
+  box-shadow:0 1px 2px rgba(60,64,67,.08);
+}
+.card.head{
+  border-top:0;
+  border-left:1px solid #dadce0;
+  border-right:1px solid #dadce0;
+  border-bottom:1px solid #dadce0;
+  position:relative;
+  overflow:hidden;
+  padding-top:32px;
+}
+.card.head::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:10px;
+  background:var(--purple);
+}
+.card.head h1{
+  font-size:29px;
+  line-height:1.22;
+  font-weight:400;
+  margin:0 0 12px;
+  letter-spacing:0;
+  color:#202124;
+}
+.card.head p{
+  font-size:15px;
+  color:#5f6368;
+  margin:0;
+  line-height:1.55;
+}
+.hr{border:none;border-top:1px solid #dadce0;margin:20px 0}
+.linkline{font-size:14px;color:#5f6368;line-height:1.7}
+.linkline b{color:#202124}
+.req-note{font-size:14px;color:#8b1e2d;margin:0}
+.qlabel{
+  font-size:16px;
+  color:#202124;
+  margin-bottom:16px;
+  line-height:1.5;
+}
+.qlabel .req{color:#a61b1b;margin-left:3px}
+.field-underline{
+  width:100%;
+  border:none;
+  border-bottom:1px solid #b7b7b7;
+  background:#fff;
+  color:#202124;
+  font-size:15px;
+  font-family:inherit;
+  padding:8px 2px;
+  outline:none;
+}
+.field-underline::placeholder{color:#777}
+.field-underline:focus{
+  border-bottom:2px solid var(--purple);
+  padding-bottom:7px;
+}
+textarea.field-underline{
+  border:1px solid #dadce0;
+  border-radius:6px;
+  padding:12px;
+  min-height:90px;
+  resize:vertical;
+  line-height:1.5;
+}
+textarea.field-underline:focus{border:2px solid var(--purple);padding:11px}
+.opt{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:11px 4px;
+  cursor:pointer;
+  border-radius:6px;
+}
+.opt:hover{background:#f8f7fc}
+.radio{
+  width:20px;height:20px;border-radius:50%;
+  border:2px solid #777;
+  flex-shrink:0;position:relative;
+  background:#fff;
+}
+.opt.sel .radio{border-color:var(--purple)}
+.opt.sel .radio::after{
+  content:'';
+  position:absolute;
+  inset:4px;
+  border-radius:50%;
+  background:var(--purple);
+}
+.opt input{display:none}
+.opttext{font-size:15px;color:#202124;line-height:1.45}
+.badge{
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  color:var(--purple);
+  background:#f3e8fd;
+  padding:4px 10px;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+.footerbtns{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin-top:6px;
+  flex-wrap:wrap;
+}
+.btn-submit{
+  background:var(--purple);
+  color:#fff;
+  border:none;
+  border-radius:4px;
+  padding:12px 28px;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  font-family:inherit;
+}
+.btn-submit:hover{background:var(--purple-d)}
+.linkbtn{
+  background:none;
+  border:none;
+  color:#5f6368;
+  font-size:14px;
+  cursor:pointer;
+  font-family:inherit;
+  padding:0;
+}
+.linkbtn:hover{color:var(--purple)}
+.gform-foot{
+  text-align:center;
+  font-size:12px;
+  color:#6b6f72;
+  line-height:1.8;
+  margin-top:18px;
+}
+.warnbar{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  background:var(--red-bg);
+  color:var(--red);
+  font-size:13px;
+  font-weight:500;
+  padding:10px 14px;
+  border-radius:8px;
+  margin-bottom:14px;
+}
+.resulthead{
+  background:#fff;
+  border:1px solid #dadce0;
+  border-top:10px solid var(--green);
+  border-radius:12px;
+  padding:28px 24px;
+  text-align:center;
+  margin-bottom:16px;
+}
+.resulthead .ico{
+  width:46px;height:46px;border-radius:50%;
+  background:var(--green-bg);color:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 12px;font-size:24px;
+}
+.resulthead h2{font-size:20px;font-weight:500;margin:0 0 6px}
+.resulthead .score{font-size:34px;font-weight:700;color:var(--purple);margin:10px 0 2px}
+.resulthead .sub{font-size:13px;color:#5f6368}
+.chiprow{display:flex;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap}
+.chip{font-size:12px;font-weight:700;background:#f3e8fd;color:var(--purple);padding:5px 11px;border-radius:12px}
+.rq-card{
+  background:#fff;
+  border:1px solid #dadce0;
+  border-radius:12px;
+  padding:18px 20px;
+  margin-bottom:12px;
+}
+.rq-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.rq-q{font-size:14.5px;color:#202124;line-height:1.5}
+.rq-icon{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.rq-icon.ok{background:var(--green-bg);color:var(--green)}
+.rq-icon.bad{background:var(--red-bg);color:var(--red)}
+.rq-icon.wait{background:#f3e8fd;color:var(--purple)}
+.rq-ans{font-size:13.5px;color:#5f6368;margin-top:4px}
+.rq-correct{font-size:13.5px;color:var(--green);margin-top:4px;font-weight:500}
+
+@media (max-width:680px){
+  .wrap{padding:14px 8px 44px}
+  .card{border-radius:10px;padding:22px 20px 24px;margin-bottom:12px}
+  .card.head{padding-top:28px}
+  .card.head h1{font-size:28px}
+  .topbar .row{padding:7px 12px}
+}
+
+/* ===== LIGHT MODE TOTAL ===== */
+html, body, #app {
+  background: #f5f5f5 !important;
+  color: #202124 !important;
+  color-scheme: light !important;
+}
+.topbar,
+.card,
+.resulthead,
+.rq-card {
+  background: #ffffff !important;
+  color: #202124 !important;
+}
+.field-underline {
+  background: #ffffff !important;
+  color: #202124 !important;
+}
+.field-underline::placeholder {
+  color: #777777 !important;
+}
+.opt:hover {
+  background: #f8f8f8 !important;
+}
+.radio {
+  background: #ffffff !important;
+}
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.addEventListener('error',function(e){console.warn('Diabaikan:',e.message);});
+window.addEventListener('unhandledrejection',function(e){console.warn('Diabaikan (promise):',e.reason);});
+</script>
+<script>
+const MC=[
+{q:"Unsur intrinsik cerpen yang menunjukkan urutan peristiwa disebut...",o:["Tema","Alur","Penokohan","Latar"],a:1},
+{q:"Kalimat yang menggunakan majas personifikasi adalah...",o:["Dia secantik bidadari","Angin malam berbisik lembut di telingaku","Suaranya menggelegar bagai petir","Hatinya sekeras batu"],a:1},
+{q:"Bagian teks eksposisi yang berisi pendapat penulis disertai alasan/bukti disebut...",o:["Tesis","Argumentasi","Penegasan ulang","Orientasi"],a:1},
+{q:"Kalimat efektif yang tepat adalah...",o:["Bagi siswa yang terlambat harus lapor ke guru piket.","Siswa yang terlambat harus lapor ke guru piket.","Kepada siswa yang terlambat wajib untuk melapor.","Para siswa-siswa harus melapor kepada guru piket."],a:1},
+{q:"Penulisan kata baku yang tepat adalah...",o:["Aktifitas","Aktivitas","Actifitas","Aktifitass"],a:1},
+{q:"Struktur teks tanggapan yang tepat adalah...",o:["Orientasi - evaluasi - simpulan","Konteks - deskripsi - penilaian","Evaluasi - deskripsi teks - penegasan ulang","Pernyataan umum - deskripsi bagian"],a:2},
+{q:"Tujuan utama teks diskusi adalah...",o:["Menghibur pembaca","Menyajikan dua sudut pandang berbeda mengenai suatu isu","Menceritakan pengalaman pribadi","Mempromosikan suatu produk"],a:1},
+{q:"Kalimat berikut yang termasuk slogan adalah...",o:["Buanglah sampah pada tempatnya karena kebersihan adalah kewajiban bersama","Buku adalah jendela dunia","Toko ini menjual alat tulis dengan harga terjangkau","Hari ini akan diadakan pertemuan wali murid"],a:1},
+{q:"Konjungsi yang menyatakan hubungan pertentangan adalah...",o:["Dan","Tetapi","Karena","Lalu"],a:1},
+{q:"Cerita inspiratif biasanya bertujuan untuk...",o:["Menakuti pembaca","Memberikan motivasi dan pelajaran hidup","Menjelaskan data statistik","Mengajak berdebat"],a:1},
+{q:"Kalimat tanggapan yang santun terhadap sebuah karya adalah...",o:["Karya ini jelek sekali, tidak layak dibaca.","Karya ini memiliki alur menarik, meski ada bagian yang bisa diperbaiki.","Penulisnya tidak becus membuat cerita.","Saya tidak suka sama sekali tulisan ini."],a:1},
+{q:"Latar dalam sebuah cerpen mencakup hal berikut, kecuali...",o:["Tempat","Waktu","Suasana","Amanat"],a:3},
+{q:"Kata 'namun' dalam kalimat berfungsi sebagai konjungsi...",o:["Penambahan","Pertentangan","Sebab akibat","Waktu"],a:1},
+{q:"Ciri kebahasaan teks persuasi ditandai dengan...",o:["Banyak kata kerja imperatif/ajakan","Hanya berisi data statistik","Menggunakan alur mundur","Tidak memiliki argumen"],a:0},
+{q:"Sudut pandang orang pertama dalam cerpen ditandai kata ganti...",o:["Dia, mereka","Aku, saya","Kamu, engkau","Beliau"],a:1},
+{q:"Penulisan huruf kapital yang tepat sesuai PUEBI adalah...",o:["Saya tinggal di kota Bandung.","Saya tinggal di Kota Bandung.","saya tinggal di Bandung.","Saya Tinggal di bandung."],a:1},
+{q:"Amanat dalam sebuah cerita adalah...",o:["Latar tempat cerita","Pesan moral yang disampaikan pengarang","Nama tokoh utama","Urutan waktu kejadian"],a:1},
+{q:"Kalimat yang menggunakan kata tidak baku adalah...",o:["Ia mengubah rencananya.","Ia merubah rencananya.","Ia mengganti bajunya.","Ia memperbaiki mobilnya."],a:1},
+{q:"Bagian penegasan ulang pada teks eksposisi berfungsi untuk...",o:["Memperkenalkan topik","Menegaskan kembali pendapat yang dikemukakan","Memberikan contoh baru","Menyampaikan data tambahan"],a:1},
+{q:"Iklan yang mengajak masyarakat melakukan sesuatu demi kepentingan bersama disebut...",o:["Iklan niaga","Iklan layanan masyarakat","Iklan baris","Iklan lowongan kerja"],a:1}
+];
+const ISI=[
+{q:"Tokoh yang menjadi pusat cerita dan biasanya mendukung nilai kebaikan disebut tokoh ____",a:["protagonis"]},
+{q:"Majas yang membandingkan dua hal secara langsung dengan kata 'seperti' atau 'bagaikan' disebut majas ____",a:["simile","perumpamaan"]},
+{q:"Bagian awal teks tanggapan yang berisi pengantar terhadap topik yang akan ditanggapi disebut ____",a:["konteks"]},
+{q:"Kata hubung 'karena' termasuk jenis konjungsi ____",a:["sebab akibat","kausalitas","kausal"]},
+{q:"Pedoman ejaan yang mengatur tata cara penulisan dalam bahasa Indonesia saat ini disingkat ____",a:["puebi"]},
+{q:"Kalimat yang susunannya tidak sesuai kaidah tata bahasa Indonesia disebut kalimat ____",a:["tidak baku"]},
+{q:"Puisi yang tidak terikat oleh rima dan jumlah baris disebut puisi ____",a:["bebas"]},
+{q:"Persamaan makna kata seperti 'melihat' dan 'menatap' disebut ____",a:["sinonim"]},
+{q:"Bagian awal teks berita yang memuat inti informasi (5W+1H) disebut ____",a:["teras berita","lead"]},
+{q:"Gabungan kata yang maknanya tidak dapat ditafsirkan dari makna kata pembentuknya disebut ____",a:["idiom","ungkapan"]}
+];
+const ESSAY=[
+"Jelaskan perbedaan antara teks eksposisi dan teks persuasi!",
+"Sebutkan dan jelaskan minimal 4 unsur intrinsik dalam cerpen!",
+"Buatlah satu paragraf singkat (3-5 kalimat) berupa teks tanggapan terhadap sebuah buku atau film yang pernah kamu baca/tonton!",
+"Jelaskan struktur teks diskusi beserta fungsi masing-masing bagiannya!",
+"Tuliskan sebuah slogan tentang pentingnya membaca buku, lalu jelaskan maknanya!"
+];
+const NMC=MC.length,NISI=ISI.length,NES=ESSAY.length,TOTAL=NMC+NISI+NES;
+const DURATION=90*60;
+let S={name:"",code:"",started:true,submitted:false,mcAns:{},isiAns:{},essayAns:{},endTime:0,warnings:0};
+function save(){try{localStorage.setItem('examBI9v3',JSON.stringify(S))}catch(e){}}
+function load(){try{const d=localStorage.getItem('examBI9v3');if(d){const p=JSON.parse(d);if(!p.submitted)S=p;}}catch(e){}}
+load();
+if(!S.endTime)S.endTime=Date.now()+DURATION*1000;
+const app=document.getElementById('app');
+function fmt(sec){if(sec<0)sec=0;const m=String(Math.floor(sec/60)).padStart(2,'0');const s=String(sec%60).padStart(2,'0');return m+':'+s;}
+function norm(s){return (s||'').trim().toLowerCase();}
+function requiredFilled(){return S.name.trim()&&S.code.trim();}
+function answeredCount(){
+  let c=0;
+  for(let i=0;i<NMC;i++)if(S.mcAns[i]!==undefined)c++;
+  for(let i=0;i<NISI;i++)if(S.isiAns[i]&&S.isiAns[i].trim())c++;
+  for(let i=0;i<NES;i++)if(S.essayAns[i]&&S.essayAns[i].trim())c++;
+  return c;
+}
+document.addEventListener('visibilitychange',()=>{if(S.started&&!S.submitted&&document.hidden){S.warnings++;save();updateWarnBanner();}});
+window.addEventListener('beforeunload',(e)=>{if(!S.submitted){e.preventDefault();e.returnValue='';}});
+document.addEventListener('contextmenu',e=>{if(!S.submitted)e.preventDefault();});
+document.addEventListener('copy',e=>{if(!S.submitted)e.preventDefault();});
+try{
+  if(document.documentElement.requestFullscreen){
+    const fsPromise=document.documentElement.requestFullscreen();
+    if(fsPromise&&typeof fsPromise.catch==='function')fsPromise.catch(function(){});
+  }
+}catch(e){}
+
+window.setName=(v)=>{S.name=v;save();}
+window.setCode=(v)=>{S.code=v;save();}
+window.setMC=(i,oi,btn)=>{S.mcAns[i]=oi;save();
+  btn.closest('.card').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  btn.closest('.opt').classList.add('sel');
+}
+window.setIsi=(i,v)=>{S.isiAns[i]=v;save();}
+window.setEssay=(i,v)=>{S.essayAns[i]=v;save();}
+window.clearForm=function(){
+  if(!confirm('Kosongkan semua jawaban yang sudah diisi?'))return;
+  S={name:"",code:"",started:true,submitted:false,mcAns:{},isiAns:{},essayAns:{},endTime:Date.now()+DURATION*1000,warnings:0};
+  save();renderForm();window.scrollTo(0,0);
+}
+window.handleSubmit=function(){
+  if(!requiredFilled()){alert('Nama Peserta dan Kode Sesi wajib diisi.');window.scrollTo(0,0);return;}
+  if(!confirm('Kirim jawaban sekarang? Jawaban tidak dapat diubah setelah dikirim.'))return;
+  S.submitted=true;save();renderResult();window.scrollTo(0,0);
+}
+function updateWarnBanner(){
+  const w=document.getElementById('warnbar');
+  if(!w)return;
+  w.style.display=S.warnings>0?'flex':'none';
+  w.textContent='⚠ Sistem mendeteksi kamu meninggalkan halaman ('+S.warnings+' kali).';
+}
+function tick(){
+  if(S.submitted)return;
+  const rem=Math.round((S.endTime-Date.now())/1000);
+  const t=document.getElementById('timepill');
+  if(t){t.textContent='⏱ '+fmt(rem)+' tersisa';t.className='timepill'+(rem<300?' low':'');}
+  const f=document.getElementById('progfill');
+  if(f)f.style.width=Math.round(answeredCount()/TOTAL*100)+'%';
+  if(rem<=0){handleAutoSubmit();}
+}
+function handleAutoSubmit(){if(S.submitted)return;S.submitted=true;save();renderResult();window.scrollTo(0,0);}
+
+function optRow(gname,i,oi,label,checked){
+  return `<label class="opt ${checked?'sel':''}">
+    <input type="radio" name="${gname}" ${checked?'checked':''} onclick="setMC(${i},${oi},this)">
+    <span class="radio"></span><span class="opttext">${label}</span></label>`;
+}
+function renderForm(){
+  let html=`<div class="topbar"><div class="track"><div class="fill" id="progfill" style="width:${Math.round(answeredCount()/TOTAL*100)}%"></div></div>
+    <div class="row"><span class="brand">Latihan Bahasa Indonesia — Kelas IX</span><span class="timepill" id="timepill">⏱ --:-- tersisa</span></div></div>
+  <div class="wrap">
+    <div id="warnbar" class="warnbar" style="display:none"></div>
+    <div class="card head">
+      <span class="badge">Kurikulum Merdeka</span>
+      <h1>Soal Try Out Ujian Sekolah Bahasa Indonesia</h1>
+      <p>Latihan soal Bahasa Indonesia kelas IX — ${NMC} pilihan ganda, ${NISI} isian singkat, ${NES} esai. Waktu pengerjaan 90 menit.</p>
+      <hr class="hr">
+      <p class="linkline"><b>Mode ujian aman aktif.</b> Jangan berpindah tab atau aplikasi selama mengerjakan.</p>
+      <hr class="hr">
+      <p class="req-note">* Menunjukkan pertanyaan yang wajib diisi</p>
+    </div>
+
+    <div class="card">
+      <div class="qlabel">Nama Peserta<span class="req">*</span></div>
+      <input class="field-underline" type="text" placeholder="Jawaban Anda" value="${(S.name||'').replace(/"/g,'&quot;')}" oninput="setName(this.value)">
+    </div>
+    <div class="card">
+      <div class="qlabel">Kode Sesi<span class="req">*</span></div>
+      <input class="field-underline" type="text" placeholder="Jawaban Anda" value="${(S.code||'').replace(/"/g,'&quot;')}" oninput="setCode(this.value)">
+    </div>
+  `;
+  MC.forEach((q,i)=>{
+    html+=`<div class="card"><div class="qlabel">${i+1}. ${q.q}<span class="req">*</span></div>`;
+    q.o.forEach((op,oi)=>{html+=optRow('mc'+i,i,oi,op,S.mcAns[i]===oi);});
+    html+=`</div>`;
+  });
+  ISI.forEach((q,i)=>{
+    html+=`<div class="card"><div class="qlabel">${NMC+i+1}. ${q.q}<span class="req">*</span></div>
+      <input class="field-underline" type="text" placeholder="Jawaban Anda" value="${(S.isiAns[i]||'').replace(/"/g,'&quot;')}" oninput="setIsi(${i},this.value)"></div>`;
+  });
+  ESSAY.forEach((q,i)=>{
+    html+=`<div class="card"><div class="qlabel">${NMC+NISI+i+1}. ${q}<span class="req">*</span></div>
+      <textarea class="field-underline" placeholder="Jawaban Anda" oninput="setEssay(${i},this.value)">${S.essayAns[i]||''}</textarea></div>`;
+  });
+  html+=`<div class="card">
+      <div class="footerbtns">
+        <button class="btn-submit" onclick="handleSubmit()">Kirim</button>
+        <button class="linkbtn" onclick="clearForm()">Kosongkan formulir</button>
+      </div>
+    </div>
+    <div class="gform-foot">Aplikasi latihan mandiri, bukan formulir Google dan bukan sistem ujian resmi sekolah.<br>Jangan pernah membagikan jawaban ujian sesungguhnya lewat formulir semacam ini.</div>
+  </div>`;
+  app.innerHTML=html;
+  updateWarnBanner();
+  tick();
+}
+function renderResult(){
+  let mcScore=0,isiScore=0,rows='';
+  MC.forEach((q,i)=>{
+    const ua=S.mcAns[i];const correct=ua===q.a;
+    if(correct)mcScore+=3;
+    rows+=`<div class="rq-card"><div class="rq-top"><div class="rq-q">${i+1}. ${q.q}</div><div class="rq-icon ${correct?'ok':'bad'}">${correct?'✓':'✕'}</div></div>
+      <div class="rq-ans">Jawaban kamu: ${ua!==undefined?String.fromCharCode(65+ua)+'. '+q.o[ua]:'(kosong)'}</div>
+      ${correct?'':'<div class="rq-correct">Jawaban benar: '+String.fromCharCode(65+q.a)+'. '+q.o[q.a]+'</div>'}
+    </div>`;
+  });
+  ISI.forEach((q,i)=>{
+    const ua=norm(S.isiAns[i]);const correct=q.a.some(x=>norm(x)===ua);
+    if(correct)isiScore+=2;
+    rows+=`<div class="rq-card"><div class="rq-top"><div class="rq-q">${NMC+i+1}. ${q.q}</div><div class="rq-icon ${correct?'ok':'bad'}">${correct?'✓':'✕'}</div></div>
+      <div class="rq-ans">Jawaban kamu: ${S.isiAns[i]||'(kosong)'}</div>
+      ${correct?'':'<div class="rq-correct">Jawaban benar: '+q.a[0]+'</div>'}
+    </div>`;
+  });
+  ESSAY.forEach((q,i)=>{
+    rows+=`<div class="rq-card"><div class="rq-top"><div class="rq-q">${NMC+NISI+i+1}. ${q}</div><div class="rq-icon wait">?</div></div>
+      <div class="rq-ans">Jawaban: ${(S.essayAns[i]||'(kosong)').replace(/</g,'&lt;')}</div>
+      <div class="rq-ans" style="font-style:italic">Menunggu penilaian guru (maks 20 poin)</div>
+    </div>`;
+  });
+  const autoScore=mcScore+isiScore;
+  app.innerHTML=`<div class="topbar"><div class="track"><div class="fill" style="width:100%"></div></div>
+    <div class="row"><span class="brand">Latihan Bahasa Indonesia — Kelas IX</span></div></div>
+  <div class="wrap">
+    <div class="resulthead">
+      <div class="ico">✓</div>
+      <h2>Ujian kamu telah dikumpulkan</h2>
+      <div class="sub">${S.name} &bull; Kode sesi ${S.code}</div>
+      <div class="score">${autoScore} / 80</div>
+      <div class="sub">Nilai dihitung dari kebenaran &amp; kesalahan jawaban Pilihan Ganda + Isian.<br>Esai dinilai manual oleh guru (maks 20 poin tambahan).</div>
+      <div class="chiprow">
+        <span class="chip">PG ${mcScore}/60</span><span class="chip">Isian ${isiScore}/20</span>
+        ${S.warnings>0?`<span class="chip" style="color:#d93025;background:#fce8e6">⚠ ${S.warnings}x pindah tab</span>`:''}
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:16px"><button class="linkbtn" style="text-decoration:underline" onclick="restart()">Ulangi latihan dari awal</button></div>
+    ${rows}
+    <div class="gform-foot">Aplikasi latihan mandiri &bull; bukan sistem ujian resmi sekolah</div>
+  </div>`;
+}
+window.restart=function(){try{localStorage.removeItem('examBI9v3')}catch(e){};S={name:"",code:"",started:true,submitted:false,mcAns:{},isiAns:{},essayAns:{},endTime:Date.now()+DURATION*1000,warnings:0};save();renderForm();window.scrollTo(0,0);}
+
+if(S.submitted)renderResult();else renderForm();
+setInterval(tick,1000);
+try{
+  if('serviceWorker' in navigator && location.protocol!=='file:'){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('./service-worker.js').catch(function(){});
+    });
+  }
+}catch(e){}
+</script>
+</body>
+</html>
